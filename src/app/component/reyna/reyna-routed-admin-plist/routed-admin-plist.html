@@ -74,6 +74,7 @@
           <th scope="col">Autor</th>
           <th scope="col">Es Pública</th>
           <th scope="col">Fecha Creación</th>
+          <th scope="col">Fecha Modificación</th>
           <th scope="col">Operaciones</th>
         </tr>
       </thead>
@@ -85,6 +86,7 @@
           <td>{{ oReyna.autor }}</td>
           <td>{{ oReyna.esPublica ? 'Sí' : 'No' }}</td>
           <td>{{ oReyna.fechaCreacion | datetime }}</td>
+          <td>{{ oReyna.fechaModificacion | datetime }}</td>
           <td>
             <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
               <a [routerLink]="['/reyna/view', oReyna.id]" class="btn btn-outline-primary">
@@ -93,6 +95,7 @@
               <a [routerLink]="['/reyna/edit', oReyna.id]" class="btn btn-outline-secondary">
                 <i class="bi bi-pencil-square"></i>
               </a>
+              
               <button
                 (click)="togglePublica(oReyna)"
                 class="btn"

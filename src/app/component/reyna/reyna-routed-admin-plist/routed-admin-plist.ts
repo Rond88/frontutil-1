@@ -83,13 +83,24 @@ export class RoutedAdminPlist {
   }
 
   togglePublica(oReyna: IReyna) {
-    this.oReynaService.togglePublica(oReyna).subscribe({
-      next: (id: number) => {
-        this.getPage(); // refrescamos listado
-      },
-      error: (err: HttpErrorResponse) => {
-        console.error(err);
-      },
-    });
+    if (!oReyna.esPublica) {
+      this.oReynaService.publicar(oReyna.id).subscribe({
+        next: (id: number) => {
+          oReyna.esPublica = true;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err);
+        },
+      });
+    } else {
+      this.oReynaService.despublicar(oReyna.id).subscribe({
+        next: (id: number) => {
+          oReyna.esPublica = false;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err);
+        },
+      });
+    }
   }
 }
