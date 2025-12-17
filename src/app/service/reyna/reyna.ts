@@ -32,6 +32,10 @@ export class ReynaService {
     return this.oHttp.get<IReyna>(serverURL + '/frasesmotivacionales/' + id);
   }
 
+  empty(): Observable<number> {
+    return this.oHttp.delete<number>(serverURL + '/frasesmotivacionales/empty');
+  }
+
   create(reyna: Partial<IReyna>): Observable<number> {
     return this.oHttp.post<number>(serverURL + '/frasesmotivacionales', reyna);
   }
